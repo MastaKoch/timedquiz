@@ -94,7 +94,23 @@ console.log(instructions);
         element.appendChild(para);
 
 
-        // GET THIS WORKING *
+        var output=[];
+        var answers;
+
+        // creates H2 element to store questions and creates buttons to store answer choices..
+        var question = document.createElement("h2");
+        question.textContent = questions[currentQuestion].question
+        quizContainer.appendChild(question);
+        for (key in questions[currentQuestion].answers) {
+            console.log (questions[currentQuestion].answers[key]);
+            var answer = document.createElement("button");
+            answer.textContent = questions[currentQuestion].answers[key];
+            quizContainer.appendChild(answer);
+        }
+    }
+
+function startTimer(){
+  // GET THIS WORKING *
         // starts timer when showQuestions function is executed
         ('DOMContentLoaded', () => {
             const timeLeftDisplay = document.getElementById("timeLeft")
@@ -110,25 +126,9 @@ console.log(instructions);
                 }, 1000);
             }
         });
- 
 
+}
 
-
-
-        var output=[];
-        var answers;
-
-        // creates H2 element to store questions and creates buttons to store answer choices..
-        var question = document.createElement("h2");
-        question.textContent = questions[currentQuestion].question
-        quizContainer.appendChild(question);
-        for (key in questions[currentQuestion].answers) {
-            console.log (questions[currentQuestion].answers[key]);
-            var answer = document.createElement("button");
-            answer.textContent = questions[currentQuestion].answers[key];
-            quizContainer.appendChild(answer);
-        }
-    }
 console.log(startBtn);
     startBtn.addEventListener("click", showQuestions);
    

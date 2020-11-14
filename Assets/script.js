@@ -1,5 +1,6 @@
-var myQuestions = [
-    {
+var questions = [
+    {  
+        // 0
         question: "What does HTML stand for?",
         answers: {
             a: "Happier Than My Lads",
@@ -11,6 +12,7 @@ var myQuestions = [
     },
     
     {
+        // 1
         question: "What does CSS stand for?",
         answers: {
             a: "Cascading Style Sheets",
@@ -22,6 +24,7 @@ var myQuestions = [
     },
     
     {
+        // 2
         question: "Choose the correct HTML tag for the largest heading.",
         answers: {
             a: "<title>",
@@ -33,6 +36,7 @@ var myQuestions = [
     },
     
     {
+        // 3
         question: "What is the correct HTML tag for inserting a line break?",
         answers: {
             a: "<skip>",
@@ -44,6 +48,7 @@ var myQuestions = [
     },
     
     {
+        // 4
         question: "What are the three building blocks of web development?",
         answers: {
             a: "HTML, CSS, Javascript",
@@ -55,54 +60,82 @@ var myQuestions = [
     },
     
     ]
-var startBtn = document.getElementById('startbtn');
-var quizContainer = document.getElementById('quiz');
-var resultsContainer= document.getElementById('results');
-var submitButton = document.getElementById('submit');
 
-generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton, startBtn);
+// define all variables
+var startBtn = document.getElementById("startbtn");
+var quizContainer = document.getElementById("quiz");
+var submitButton = document.getElementById("score");
+var resultsContainer= document.getElementById("results");
+var currentQuestion = 0;
+// var showQuestions = 0;
+var intro = document.getElementById("intro");
+var instructions = document.querySelector(".rules");
+// var timer = document.getElementById("timer");
 
-function generateQuiz(questions, quizContainer, resultsContainer, submitButton, startBtn){
 
-    function showQuestions(questions, quizContainer){
-        // code will go in here
+
+console.log(instructions);
+
+
+    // showQuestions function
+    function showQuestions(){
+        console.log("hi");
+        // removes HTML elements
+        instructions.textContent = "";
+        intro.textContent = "";
+        startBtn.remove();
+
+
+        // adds timer when function showQuestions is executed
+        var para = document.createElement("p");
+        var node = document.createTextNode(15, id="timeLeft");
+        para.appendChild(node);
+        var element= document.getElementById("challenge");
+        element.appendChild(para);
+
+        // starts timer when showQuestions function is executed
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const timeLeftDisplay = document.getElementById("timeLeft")
+            const startBtn = docuent.querySelector("startBtn")
+            var timeLeft=15
+
+            function countDown(){
+                setInterval(function(){
+                     if(timeLeft <=0 ){
+                         clearInterval(timeLeft = 0)
+                     }
+     
+     
+                    timeLeftDisplay.innerHTML = timeLeft
+                    timeLeft -=1
+                }, 1000)
+            }
+            startBtn.addEventListener("click", countDown());
+        })
+
+
+
 
         var output=[];
         var answers;
 
-        // for each question...
-        for(var i=0; i<questions.length; i++){
-
-            // first reset the list of answers
-            answers=[];
-
-            // for each available answer to this question...
-            for(letter in questions[i].answers){
-
-
-                // add HTML radio button
-                answers.push(
-                    '<label>'
-                        + '<input type="radio" name ="question '+i+'" value=" "+letter+"">'
-                        + letter + ': '
-                        + questions[i].answers[letter]
-                    + '</label>'
-                );
-            }
-
-            // add this question and its answers to the output
-            output.push(
-                '<div class="question">' + questions[i].question + '</div>'
-                + '<div class="answers">' + answers.join('') + '</div>'
-            );
-            
-            // combine output list into one string of HTML and put it to page
-            quizContainer.innerHTML = output.join('');
-
+        // creates H2 element to store questions and creates buttons to store answer choices..
+        var question = document.createElement("h2");
+        question.textContent = questions[currentQuestion].question
+        quizContainer.appendChild(question);
+        for (key in questions[currentQuestion].answers) {
+            console.log (questions[currentQuestion].answers[key]);
+            var answer = document.createElement("button");
+            answer.textContent = questions[currentQuestion].answers[key];
+            quizContainer.appendChild(answer);
         }
     }
-
-function showResults(questions, quizContainer, resultsContainer){
+console.log(startBtn);
+    startBtn.addEventListener("click", showQuestions);
+   
+    
+function showResults(){
 
     // code will go in here
     // gather answer containers from our quiz
@@ -136,19 +169,15 @@ function showResults(questions, quizContainer, resultsContainer){
     resultsContainer.innerHTML=numCorrect + 'out of' + questions.length;
 }
 
-// show the questions right away
-showQuestions(questions, quizContainer);
-
 // when user clicks submit, show results
 submitButton.onclick= function(){
     showResults(questions, quizContainer, resultsContainer);
     
     }
 // when user clicks "Begin", quiz starts
-startBtn.onclick=function(){
-    generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton, startBtn);
-}
-}
+// startBtn.onclick=function(){
+//     generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton, startBtn);
+// }
 
 
 

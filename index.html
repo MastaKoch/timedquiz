@@ -9,11 +9,11 @@
 
     <body>
         <header>
-            <h1>Coding Quiz Challenge</h1>
+            <h1 id="challenge">Coding Quiz Challenge</h1>
         </header>
 
             <!-- introduction to quiz -->
-            <h2>Are you a coder who is ready for the ultimate test? 
+            <h2 id="intro">Are you a coder who is ready for the ultimate test? 
                 Are you competitive?
                 Do you like to win?
                 If so, you came to the right place!
@@ -42,18 +42,18 @@
             <div class="startbtn" id="startbtn"><button>Begin!</button></div>
 
             <!-- timer -->
-            <header>
+            <!-- <header>
                 <div class="title">Awesome Quiz Application</div>
-                <div class="timer">
+                <div class="timer" id="timer">
                     <div class="time_text">Time Left</div>
-                    <div class="timer_sec">15</div>
+                    <div class="timer_sec" id="timer_sec">15</div>
                 </div>
-            </header>
+            </header> -->
     <!-- begin quiz questions -->
-    <div class="quiz">
+    <div id="quiz">
     </div>
 
-    <button id="submit">Get Results</button>
+    <button id="score">Score:</button>
     <div id="results"></div>
         <script src="Assets/script.js"></script>
     </body>

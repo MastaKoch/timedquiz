@@ -93,26 +93,24 @@ console.log(instructions);
         var element= document.getElementById("challenge");
         element.appendChild(para);
 
+
+        // GET THIS WORKING *
         // starts timer when showQuestions function is executed
-
-        document.addEventListener('DOMContentLoaded', () => {
+        ('DOMContentLoaded', () => {
             const timeLeftDisplay = document.getElementById("timeLeft")
-            const startBtn = docuent.querySelector("startBtn")
-            var timeLeft=15
-
+           
+            var timeLeft=15;
             function countDown(){
                 setInterval(function(){
                      if(timeLeft <=0 ){
                          clearInterval(timeLeft = 0)
                      }
-     
-     
                     timeLeftDisplay.innerHTML = timeLeft
                     timeLeft -=1
-                }, 1000)
+                }, 1000);
             }
-            startBtn.addEventListener("click", countDown());
-        })
+        });
+ 
 
 
 

@@ -165,15 +165,29 @@ function checkAnswer(event) {
 //     score: 5
 // }]
 function showHighScores() {
+        console.log(timeLeft)
+        
+        // 1. Create/Show Element for user input
 
+        var highScore = document.createElement("input");
+        // 2. gather information from input
+        // 3. Make a variable that we can use in localStorage 
+    
+        // THIS IS FOR AN EXAMPLE AND DOES NOT NECESSARILY WORK
+        var highScore = {
+            username: document.querySelector("input"),
+            score: timeLeft
+        }
+    
+        // 4. localStorage.setItem(highScore.username, highScore.timeLeft)
+        // https://tinyurl.com/y59lbefd
+    }
 
-}
 function startTimer() {
     // starts timer when showQuestions function is executed
 
     const timeLeftDisplay = document.getElementById("timeLeft")
 
-    // var timeLeft=5;
     setInterval(function () {
         if (timeLeft <= 0) {
             clearInterval(timeLeft = 0)
@@ -188,6 +202,7 @@ console.log(startBtn);
 
 // When you click the start button, it will run showQuestions function.
 startBtn.addEventListener("click", beginQuiz);
+submitBtn.addEventListener("click", showHighScores);
 
     // create resetTimer function, which resets the timer back to 5 seconds if you get the correct answer.
 //    function resetTimer(){

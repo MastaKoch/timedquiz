@@ -160,10 +160,7 @@ function checkAnswer(event) {
 
 }
 
-// [{
-//     initials: "JRJ",
-//     score: 5
-// }]
+
 function showHighScores() {
         console.log(timeLeft)
         

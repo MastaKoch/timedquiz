@@ -170,17 +170,13 @@ function showHighScores() {
         // 1. Create/Show Element for user input
 
         var highScore = document.createElement("input");
-        // 2. gather information from input
-        // 3. Make a variable that we can use in localStorage 
     
-        // THIS IS FOR AN EXAMPLE AND DOES NOT NECESSARILY WORK
+     
         var highScore = {
             username: document.querySelector("input"),
             score: timeLeft
         }
     
-        // 4. localStorage.setItem(highScore.username, highScore.timeLeft)
-        // https://tinyurl.com/y59lbefd
     }
 
 function startTimer() {
@@ -204,51 +200,6 @@ console.log(startBtn);
 startBtn.addEventListener("click", beginQuiz);
 submitBtn.addEventListener("click", showHighScores);
 
-    // create resetTimer function, which resets the timer back to 5 seconds if you get the correct answer.
-//    function resetTimer(){
-//     if (userAnswer=== )
-
-//    }
-
-// function showResults(){
-
-//     // code will go in here
-//     // gather answer containers from our quiz
-//     var answerContainers= quizContainer.querySelectorAll('.answers');
-
-//     // keep track of answers
-//     var userAnswer='';
-//     var numCorrect=0;
-
-//     // for each question...
-//     for(var i=0; i<questions.length; i++){
-
-//         // find selected answer
-//         userAnswer=(answerContainers[i].querySelector('input[name=question'+i+']:checked')|| {}).value;
-
-//         // if answer is correct
-//         if(userAnswer===questions[i].correctAnswer){
-//             // add to the number of correct answers
-//             numCorrect++;
-
-//             // color the answers green
-//             answerContainers[i].style.color= 'lightgreen';
-//         }
-//         // if answer is wrong or blank
-//         else{
-//             // color answers red
-//             answerContainers[i].style.color= 'red';
-//         }
-//     }
-//     // show number of correct answers out of total
-//     resultsContainer.innerHTML=numCorrect + 'out of' + questions.length;
-// }
-
-// // when user clicks submit, show results
-// submitButton.onclick= function(){
-//     showResults(questions, quizContainer, resultsContainer);
-
-    // }
 
 
 

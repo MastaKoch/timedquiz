@@ -127,7 +127,9 @@ function checkAnswer(event) {
         else {
             showHighScores();
         }
-    } else { 
+    } 
+    
+    else { 
         timeLeft = timeLeft - 10 
         currentQuestion++;
         if (currentQuestion < questions.length) {
@@ -162,10 +164,12 @@ function showHighScores() {
         // Create username and high score variables 
         
         // put score in #finalscore with append child
-        var node = document.createElement("h1");
-        var textNode = document.getElementById("timeLeft");
-        node.appendChild(textNode);
-        document.getElementById("#finalScore").appendChild(textNode);
+        var ele = document.createElement("h1");
+        ele.className= "highScoreDisplay";
+        ele.innerHTML=timeLeft;
+        var node = timeLeft;
+        ele.appendChild(node);
+        document.getElementById("#finalScore").appendChild(ele);
     
     };
 

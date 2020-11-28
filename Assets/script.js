@@ -71,6 +71,8 @@ var currentQuestion = 0;
 var timeLeft = 30;
 var intro = document.getElementById("intro");
 var instructions = document.querySelector(".rules");
+var username= document.getElementById("username");
+var saveScoreBtn=document.getElementById("saveHiScoreBtn");
 
 
 function beginQuiz() {
@@ -142,36 +144,30 @@ function showHighScores() {
 
     // 1. figure out how to clear out the elements on the page when user clicks "submit" button.  
 
-         // creates "Submit" button when function showHighScores() is executed
+         // creates "Get Results" button when function showHighScores() is executed
         var submitNow = document.createElement("button");
         var node2 = document.createTextNode("Get Results");
         submitNow.id = "getResults";
-        submitNow.href= "pages/hiscore.html"
+        submitNow.addEventListener("click", function(){
+            window.location.href = "pages/hiscore.html"
+        });
         submitNow.appendChild(node2);
         var endBtn = document.getElementById("bottombtns");
         endBtn.appendChild(submitNow);
 
     // clears screen 
         quizContainer.textContent="";
-
-   
-
-    // 2. Create/Show Element for user input
-
-
-        var highScore = document.createElement("input");
-        console.log(highScore);
-        highScore.textContent="Enter Initials Here";
-        highScore.hasAttributes("id", "initialField");
-
-        resultsContainer.appendChild(highScore);
      
-        // var highScore = {
-        //     username: document.querySelector("input"),
-        //     score: timeLeft
-        // }
+        
+        // Create username and high score variables 
+        
+        // put score in #finalscore with append child
+        var node = document.createElement("h1");
+        var textNode = document.getElementById("timeLeft");
+        node.appendChild(textNode);
+        document.getElementById("#finalScore").appendChild(textNode);
     
-    }
+    };
 
 function startTimer() {
     // starts timer when showQuestions function is executed
@@ -189,8 +185,6 @@ function startTimer() {
 
 console.log(startBtn);
 
-
-// When you click the start button, it will run showQuestions function.
 startBtn.addEventListener("click", beginQuiz);
 
 

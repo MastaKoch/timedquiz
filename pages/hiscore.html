@@ -13,16 +13,38 @@
         </header>
 
 
+        <!-- high scores go in here
+        formatted like [username] "..." [high score] -->
+        <div class="hsContainer"></div>
+
+        
+        <!-- users enter usernames and save their high scores here -->
+        <div class = "inputContainer">
+        <h1 id="finalScore"></h1>
+            <form>
+                <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="username"/>
+                
+                <br>
+
+                <button
+                type="submit"
+                class="btn"
+                id="saveHiScoreBtn"
+                onclick="showHighScores(event)"
+                disabled>
+                Save High Score</button>
+            </form>
+
             <!-- home button -->
             <div class="homeBtn" id="homeBtn">
-                <a href="../index.html" target= "_blank"><button>Home</button></a>
+                <a href="../index.html"><button>Home</button></a>
             </div>
-   
-
-    <!-- <button id="score">Score:</button> -->
-    <div id="results"></div>
-    
-    
+        </div>
+      
     <script src="../Assets/script.js"></script>
     </body>
 

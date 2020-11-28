@@ -69,17 +69,10 @@ var submitButton = document.getElementById("score");
 var resultsContainer = document.getElementById("results");
 var currentQuestion = 0;
 var timeLeft = 30;
-// var showQuestions = 0;
 var intro = document.getElementById("intro");
 var instructions = document.querySelector(".rules");
-// var timer = document.getElementById("timer");
 
 
-
-console.log(instructions);
-
-
-// beginQuiz function
 function beginQuiz() {
 
     // removes HTML elements
@@ -98,25 +91,12 @@ function beginQuiz() {
     element.appendChild(para);
     startTimer();
 
-
-    // creates "Next Question" button when function beginQuiz is executed
-    var nextQ = document.createElement("button");
-    var node2 = document.createTextNode("Submit");
-    nextQ.id = "submitBtn";
-    nextQ.appendChild(node2);
-    var nQ = document.getElementById("bottombtns");
-    nQ.appendChild(nextQ);
-
-
-    // call resetTimer function (resets timer if you guess the correct answer)
-
-
     var output = [];
     var answers;
     displayQuestion();
-
-
 }
+
+
 function displayQuestion() {
     // creates H2 element to store questions and creates buttons to store answer choices..
     quizContainer.innerHTML = "";
@@ -134,9 +114,9 @@ function displayQuestion() {
         quizContainer.appendChild(answer);
     }
 }
-function checkAnswer(event) {
 
-    console.log(questions[currentQuestion].correctAnswer === event.target.id);
+// clean up checkAnswer function
+function checkAnswer(event) {
     if (questions[currentQuestion].correctAnswer === event.target.id) {
         currentQuestion++;
         if (currentQuestion < questions.length) {
@@ -155,24 +135,41 @@ function checkAnswer(event) {
             showHighScores();
         }
     }
-
-
-
 }
 
 
 function showHighScores() {
-        console.log(timeLeft)
-        
-        // 1. Create/Show Element for user input
+
+    // 1. figure out how to clear out the elements on the page when user clicks "submit" button.  
+
+         // creates "Submit" button when function showHighScores() is executed
+        var submitNow = document.createElement("button");
+        var node2 = document.createTextNode("Get Results");
+        submitNow.id = "getResults";
+        submitNow.href= "pages/hiscore.html"
+        submitNow.appendChild(node2);
+        var endBtn = document.getElementById("bottombtns");
+        endBtn.appendChild(submitNow);
+
+    // clears screen 
+        quizContainer.textContent="";
+
+   
+
+    // 2. Create/Show Element for user input
+
 
         var highScore = document.createElement("input");
-    
+        console.log(highScore);
+        highScore.textContent="Enter Initials Here";
+        highScore.hasAttributes("id", "initialField");
+
+        resultsContainer.appendChild(highScore);
      
-        var highScore = {
-            username: document.querySelector("input"),
-            score: timeLeft
-        }
+        // var highScore = {
+        //     username: document.querySelector("input"),
+        //     score: timeLeft
+        // }
     
     }
 
@@ -195,7 +192,8 @@ console.log(startBtn);
 
 // When you click the start button, it will run showQuestions function.
 startBtn.addEventListener("click", beginQuiz);
-submitBtn.addEventListener("click", showHighScores);
+
+
 
 
 
